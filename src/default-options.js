@@ -1,5 +1,7 @@
 export default function defaultOptions(options = {}) {
 	options = {
+		site: 'goalrilla',
+		cookieExpiration: 1,
 		endpoint: process.env.PRICING_ENDPOINT || process.env.GATSBY_PRICING_ENDPOINT || 'production',
 		site: process.env.SITE_ID || process.env.GATSBY_SITE_ID,
 		...options

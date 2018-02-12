@@ -2,6 +2,8 @@ import fetch from 'fetch-retry'
 
 export default async function(ids){
 	if (!ids) ids = Object.keys(this.store)
+	else if(typeof ids === 'string') ids = [ ids ]
+	if(!ids.length) return
 	// Fetch prices
 	let res
 	try {
