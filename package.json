@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "fetch-retry": "^1.1.1",
+    "js-cookie": "^2.2.0",
     "usd-formatter": "^1.0.1"
   }
 }

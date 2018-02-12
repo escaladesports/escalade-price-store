@@ -19,11 +19,5 @@ export default async function(ids){
 	catch(err){
 		return console.error(err)
 	}
-
-	for(let i in res){
-		if(this.store[i] !== res[i]){
-			this.store[i] = res[i]
-		}
-	}
-
+	this.setPrices(res)
 }

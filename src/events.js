@@ -5,8 +5,15 @@ export default {
 			formatted: true,
 			...options
 		}
+		if(options.id){
+			options.id = options.id.toLowerCase()
+		}
+		if(!(options.id in this.store)) {
+			this.fetch(options.id)
+		}
 		this.changeEvents.push(fn)
 		this.changeEventsOptions.push(options)
+		return this
 	},
 	removeEvent() {
 		let index = this.changeEvents.indexOf(fn)
@@ -14,10 +21,12 @@ export default {
 			this.changeEvents.splice(index, 1)
 			this.changeEventsOptions.splice(index, 1)
 		}
+		return this
 	},
 	triggerChange(id = false) {
 		this.changeEventsOptions.forEach((opt, key) => {
 			if (id !== false) {
+				id = id.toLowerCase()
 				if (opt.id === id) {
 					if (opt.formatted) {
 						this.changeEvents[key](this.getFormattedPrice(id))

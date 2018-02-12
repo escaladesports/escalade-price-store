@@ -3,11 +3,12 @@ import fetch from './fetch'
 import events from './events'
 import getters from './getters'
 import setters from './setters'
+import cookie from './cookie'
 
-class Prices {
+class PriceStore {
 	constructor(options) {
 		this.options = defaultOptions(options)
-		if(!options.site){
+		if(!this.options.site){
 			return console.log(`'site' option must be supplied`)
 		}
 		this.store = {}
@@ -15,7 +16,7 @@ class Prices {
 		this.changeEventsOptions = []
 		if(options.ids && options.ids.length){
 			options.ids.forEach(id => {
-				this.store[id] = false
+				this.store[id.toLowerCase()] = false
 			})
 		}
 		this.getCookie()
@@ -24,11 +25,12 @@ class Prices {
 	}
 }
 
-Prices.prototype = {
+PriceStore.prototype = {
 	fetch,
 	...events,
 	...getters,
 	...setters,
+	...cookie,
 }
 
-export default Prices
+export default PriceStore

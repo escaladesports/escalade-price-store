@@ -1,12 +1,48 @@
 import { expect } from 'chai'
-const theModule = require('../dist/index')
+import PriceStore from '../src'
 
-console.log('MODULE:', theModule)
+const timeout = 10 * 1000
 
-describe('Default module', () => {
-	it('Should have content', () => {
-		const testVar = theModule()
-		expect(testVar).to.not.be.empty
-		expect(testVar.test).to.equal('123')
+function createStore(options){
+	return new PriceStore({
+		site: 'goalrilla',
+		ids: ['B1002'],
+		...options
 	})
+}
+
+describe('Price store', function(){
+
+	it('Should return a price', done => {
+		createStore()
+			.addEvent(prices => {
+				expect(typeof prices[`b1002`]).to.equal('string')
+				done()
+			})
+	}).timeout(timeout)
+
+	it('Should return an unformatted price', done => {
+		createStore()
+			.addEvent(prices => {
+				expect(typeof prices[`b1002`]).to.equal('number')
+				done()
+			}, { formatted: false })
+	}).timeout(timeout)
+
+	it('Should return an single price', done => {
+		createStore()
+			.addEvent(price => {
+				expect(typeof price).to.equal('string')
+				done()
+			}, { id: `b1002` })
+	}).timeout(timeout)
+
+	it('Should return an price added later', done => {
+		createStore({ ids: [] })
+			.addEvent(price => {
+				expect(typeof price).to.equal('string')
+				done()
+			}, { id: `b1002` })
+	}).timeout(timeout)
+
 })
