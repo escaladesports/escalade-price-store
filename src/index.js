@@ -7,6 +7,9 @@ import setters from './setters'
 class Prices {
 	constructor(options) {
 		this.options = defaultOptions(options)
+		if(!options.site){
+			return console.log(`'site' option must be supplied`)
+		}
 		this.store = {}
 		this.changeEvents = []
 		this.changeEventsOptions = []
@@ -17,6 +20,7 @@ class Prices {
 		}
 		this.getCookie()
 		this.fetch()
+		return this
 	}
 }
 

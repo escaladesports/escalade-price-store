@@ -1,25 +1,28 @@
-# JavaScript Module Boilerplate
+# escalade-price-store
 
-A simple JavaScript boilerplate that outputs to ES5 and ES6.
+An event-based store system for getting Escalade Sports pricing. Stores all fetched prices in a cookie for quick retrieval.
 
-## Getting started
+## Installation
 
 ```bash
-git clone git@github.com:escaladesports/javascript-module-boilerplate.git --depth=1 your-module
-cd your-module
-yarn
-yarn reset
+yarn add escalade-price-store
 ```
-
-Also make sure to edit the `package.json` file with a new name, version number, author, and anything else you might need.
 
 ## Usage
 
-- `yarn build`: Build browser and node versions of the module
-- `yarn dev`: Run live dev mode
-- `yarn test`: Run mocha tests
-- `yarn analyze`: View bundle sizes
+```javascript
+import PriceStore from 'escalade-price-store'
 
-# Unit Testing
+const priceStore = new PriceStore({
+	site: `goalrilla`,
+	ids: [ `ID1`, `ID2` ]
+})
 
-Unit tests will be performed pre-commit and pre-publish. You can change this in the npm scripts if this doesn't work well with your use case.
+function allChanged(prices){
+	console.log(prices)
+}
+
+priceStore.addEvent(allChanged)
+
+priceStore.removeEvent(allChanged)
+```
