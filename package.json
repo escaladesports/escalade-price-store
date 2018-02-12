@@ -12,18 +12,15 @@
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/escaladesports/javascript-module-boilerplate.git"
+    "url": "https://github.com/escaladesports/escalade-price-store.git"
   },
   "license": "MIT",
   "scripts": {
-    "analyze": "esca-scripts analyze --input './src/inject.js' --browser",
+    "analyze": "esca-scripts analyze --input './src/index.js' --component",
     "build": "run-p build:main build:browser",
     "build:main": "esca-scripts build --input './src/index.js' --output './dist/index.js' --babel --component",
-    "build:browser": "esca-scripts build --input './src/index.js' --output './dist-browser/index.js' --component --browser --minify --name moduleBoilerplate",
     "dev": "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
-    "open:github": "opn https://github.com/escaladesports/javascript-module-boilerplate",
     "prepublishOnly": "npm run build",
-    "reset": "esca-scripts reset",
     "test": "esca-scripts test"
   },
   "devDependencies": {
