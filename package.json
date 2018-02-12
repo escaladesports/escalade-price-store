@@ -17,8 +17,7 @@
   "license": "MIT",
   "scripts": {
     "analyze": "esca-scripts analyze --input './src/index.js' --component",
-    "build": "run-p build:main build:browser",
-    "build:main": "esca-scripts build --input './src/index.js' --output './dist/index.js' --babel --component",
+    "build": "esca-scripts build --input './src/index.js' --output './dist/index.js' --babel --component",
     "dev": "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
     "prepublishOnly": "npm run build",
     "test": "esca-scripts test"
