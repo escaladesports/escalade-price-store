@@ -14,5 +14,16 @@ export default {
 				this.setCookie()
 			}
 		}
+	},
+	addIds(ids, init){
+		ids.forEach(id => {
+			id = id.toLowerCase()
+			if (!(id in this.store)) {
+				this.store[id] = false
+			}
+		})
+		if(!init){
+			this.fetch()
+		}
 	}
 }

@@ -15,9 +15,7 @@ class PriceStore {
 		this.changeEvents = []
 		this.changeEventsOptions = []
 		if(options.ids && options.ids.length){
-			options.ids.forEach(id => {
-				this.store[id.toLowerCase()] = false
-			})
+			this.addIds(options.ids, true)
 		}
 		this.getCookie()
 		this.fetch()
