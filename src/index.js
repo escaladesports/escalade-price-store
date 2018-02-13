@@ -1,4 +1,5 @@
 import defaultOptions from './default-options'
+import log from './log'
 import fetch from './fetch'
 import events from './events'
 import getters from './getters'
@@ -8,6 +9,7 @@ import cookie from './cookie'
 class PriceStore {
 	constructor(options) {
 		this.options = defaultOptions(options)
+		this.log(`Constructing store...`)
 		if(!this.options.site){
 			return console.log(`'site' option must be supplied`)
 		}
@@ -25,6 +27,7 @@ class PriceStore {
 
 PriceStore.prototype = {
 	fetch,
+	log,
 	...events,
 	...getters,
 	...setters,

@@ -7,6 +7,7 @@ export default async function(ids){
 	// Fetch prices
 	let res
 	try {
+		this.log(`Fetching prices from ${this.options.endpoint}...`)
 		res = await fetch(this.options.endpoint, {
 			method: 'POST',
 			body: JSON.stringify({
@@ -19,5 +20,6 @@ export default async function(ids){
 	catch(err){
 		return console.error(err)
 	}
-	this.setPrices(res)
+	this.log(`Fetched prices:`, res)
+	this.setPrices(res, 'api')
 }

@@ -19,7 +19,8 @@ export default {
 				console.error(err)
 			}
 			if(data){
-				this.setPrices(data, true)
+				this.setPrices(data, 'cookie')
+				this.log(`Loaded prices from cookie:`, data)
 			}
 		}
 	}

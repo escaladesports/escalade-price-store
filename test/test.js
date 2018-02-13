@@ -7,6 +7,7 @@ function createStore(options){
 	return new PriceStore({
 		site: 'goalrilla',
 		ids: ['B1002'],
+		//verbose: true,
 		...options
 	})
 }
@@ -43,6 +44,15 @@ describe('Price store', function(){
 				expect(typeof price).to.equal('string')
 				done()
 			}, { id: `b1002` })
+	}).timeout(timeout)
+
+	it('Should return an undefined price', done => {
+		createStore({ ids: ['abc123'] })
+			.addEvent(prices => {
+				console.log('PRICES', prices)
+				expect(typeof prices[`abc123`]).to.equal('undefined')
+				done()
+			})
 	}).timeout(timeout)
 
 })

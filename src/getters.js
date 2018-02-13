@@ -21,7 +21,9 @@ export default {
 	getFormattedPrices() {
 		let prices = {}
 		for (let i in this.store) {
-			prices[i] = format(this.store[i])
+			if (this.store[i]) {
+				prices[i] = format(this.store[i])
+			}
 		}
 		return prices
 	}

@@ -1,7 +1,12 @@
 export default {
-	setPrices(res, fromCookie){
+	setPrices(res, from){
+		this.log(`Setting prices from ${from}`)
+		this.log(`Setting prices:`, res)
 		let changed = false
-		for(let i in res){
+		for (let i in res) {
+			if (from === 'api' && res[i] === false) {
+				res[i] = undefined
+			}
 			if (this.store[i] !== res[i]) {
 				changed = true
 				this.store[i] = res[i]
@@ -10,7 +15,7 @@ export default {
 		}
 		if(changed === true){
 			this.triggerChange()
-			if (!fromCookie) {
+			if (from !== 'cookie') {
 				this.setCookie()
 			}
 		}
