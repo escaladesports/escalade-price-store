@@ -20,11 +20,13 @@
     "build": "esca-scripts build --input './src' --output './dist' --multiple --babel --component",
     "dev": "esca-scripts dev ---input './dev/dev.js, ./dev/index.html' --browser",
     "prepublishOnly": "npm run build",
-    "test": "esca-scripts test"
+    "test": "esca-scripts test",
+    "travis": "opn https://travis-ci.org/escaladesports/escalade-price-store/branches"
   },
   "devDependencies": {
     "esca-scripts": "^0.13.3",
-    "npm-run-all": "^4.1.2"
+    "npm-run-all": "^4.1.2",
+    "opn-cli": "^3.1.0"
   },
   "dependencies": {
     "fetch-retry": "^1.1.1",
