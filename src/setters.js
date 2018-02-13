@@ -21,13 +21,15 @@ export default {
 		}
 	},
 	addIds(ids, init){
+		let found = false
 		ids.forEach(id => {
 			id = id.toLowerCase()
 			if (!(id in this.store)) {
+				found = true
 				this.store[id] = false
 			}
 		})
-		if(!init){
+		if(!init && found === true){
 			this.fetch()
 		}
 	}
