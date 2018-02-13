@@ -29,6 +29,7 @@
     "opn-cli": "^3.1.0"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "fetch-retry": "^1.1.1",
     "js-cookie": "^2.2.0",
     "usd-formatter": "^1.0.1"
