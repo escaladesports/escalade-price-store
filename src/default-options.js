@@ -2,6 +2,7 @@ export default function defaultOptions(options = {}) {
 	options = {
 		cookies: true,
 		cookieExpiration: 1,
+		pollInterval: 15 * 60 * 1000, // Minutes
 		endpoint: process.env.PRICING_ENDPOINT || process.env.GATSBY_PRICING_ENDPOINT || 'production',
 		site: process.env.SITE_ID || process.env.GATSBY_SITE_ID,
 		...options

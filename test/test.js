@@ -8,6 +8,7 @@ function createStore(options){
 		site: 'goalrilla',
 		ids: ['B1002'],
 		//verbose: true,
+		pollInterval: false,
 		...options
 	})
 }

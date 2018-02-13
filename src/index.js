@@ -5,6 +5,7 @@ import events from './events'
 import getters from './getters'
 import setters from './setters'
 import cookie from './cookie'
+import poll from './poll'
 
 class PriceStore {
 	constructor(options) {
@@ -21,6 +22,7 @@ class PriceStore {
 		}
 		this.getCookie()
 		this.fetch()
+		this.poll()
 		return this
 	}
 }
@@ -28,6 +30,7 @@ class PriceStore {
 PriceStore.prototype = {
 	fetch,
 	log,
+	poll,
 	...events,
 	...getters,
 	...setters,

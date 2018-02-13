@@ -18,7 +18,8 @@ export default async function(ids){
 		res = await res.json()
 	}
 	catch(err){
-		return console.error(err)
+		console.error(err)
+		return
 	}
 	this.log(`Fetched prices:`, res)
 	this.setPrices(res, 'api')
