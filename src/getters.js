@@ -6,7 +6,6 @@ export default {
 		if (id in this.store) {
 			return this.store[id]
 		}
-		return false
 	},
 	getPrices() {
 		return {
@@ -18,7 +17,6 @@ export default {
 		if (price) {
 			return format(price)
 		}
-		return false
 	},
 	getFormattedPrices() {
 		let prices = {}
