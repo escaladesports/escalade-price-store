@@ -24,7 +24,7 @@
     "travis": "opn https://travis-ci.org/escaladesports/escalade-price-store/branches"
   },
   "devDependencies": {
-    "esca-scripts": "^0.13.3",
+    "esca-scripts": "0.13.4",
     "npm-run-all": "^4.1.2",
     "opn-cli": "^3.1.0"
   },
