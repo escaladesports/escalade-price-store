@@ -1,6 +1,6 @@
 import format from 'usd-formatter'
 
-formatPrice(price){
+function formatPrice(price){
 	if (price === 'undefined') {
 		return 'undefined'
 	}

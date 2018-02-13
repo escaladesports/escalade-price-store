@@ -49,8 +49,7 @@ describe('Price store', function(){
 	it('Should return an undefined price', done => {
 		createStore({ ids: ['abc123'] })
 			.addEvent(prices => {
-				console.log('PRICES', prices)
-				expect(typeof prices[`abc123`]).to.equal('undefined')
+				expect(prices[`abc123`]).to.equal('undefined')
 				done()
 			})
 	}).timeout(timeout)
