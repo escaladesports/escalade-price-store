@@ -5,7 +5,7 @@ export default {
 		let changed = false
 		for (let i in res) {
 			if (from === 'api' && res[i] === false) {
-				res[i] = undefined
+				res[i] = 'undefined'
 			}
 			if (this.store[i] !== res[i]) {
 				changed = true

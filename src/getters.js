@@ -1,5 +1,12 @@
 import format from 'usd-formatter'
 
+formatPrice(price){
+	if (price === 'undefined') {
+		return 'undefined'
+	}
+	return format(price)
+}
+
 export default {
 	getPrice(id) {
 		id = id.toLowerCase()
@@ -15,14 +22,14 @@ export default {
 	getFormattedPrice(id) {
 		let price = this.getPrice(id)
 		if (price) {
-			return format(price)
+			return formatPrice(price)
 		}
 	},
 	getFormattedPrices() {
 		let prices = {}
 		for (let i in this.store) {
 			if (this.store[i]) {
-				prices[i] = format(this.store[i])
+				prices[i] = formatPrice(this.store[i])
 			}
 		}
 		return prices
