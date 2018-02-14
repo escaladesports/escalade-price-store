@@ -1,7 +1,7 @@
 export default {
-	setPrices(res, from){
-		this.log(`Setting prices from ${from}`)
-		this.log(`Setting prices:`, res)
+	setData(res, from){
+		this.log(`Setting data from ${from}`)
+		this.log(`Setting data:`, res)
 		let changed = false
 		for (let i in res) {
 			if (from === 'api' && res[i] === false) {

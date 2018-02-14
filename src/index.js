@@ -1,40 +1,79 @@
-import defaultOptions from './default-options'
-import log from './log'
-import fetch from './fetch'
-import events from './events'
-import getters from './getters'
-import setters from './setters'
-import cookie from './cookie'
-import poll from './poll'
+import format from 'usd-formatter'
 
-class PriceStore {
-	constructor(options) {
-		this.options = defaultOptions(options)
-		this.log(`Constructing store...`)
-		if(!this.options.site){
-			return console.log(`'site' option must be supplied`)
-		}
-		this.store = {}
-		this.changeEvents = []
-		this.changeEventsOptions = []
-		if(options.ids && options.ids.length){
-			this.addIds(options.ids, true)
-		}
-		this.getCookie()
-		this.fetch()
-		this.poll()
-		return this
+import DataStore from './data'
+
+function formatPrice(price) {
+	if (price === 'undefined') {
+		return 'undefined'
 	}
+	return format(price)
 }
 
-PriceStore.prototype = {
-	fetch,
-	log,
-	poll,
-	...events,
-	...getters,
-	...setters,
-	...cookie,
+class PriceStore extends DataStore {
+	constructor(options){
+		options = {
+			envEndpoints: [`PRICING_ENDPOINT`, `GATSBY_PRICING_ENDPOINT`],
+			cookiePrefix: `escaPricing`,
+			productionEndpoint: `https://cojn6cbcd7.execute-api.us-east-1.amazonaws.com/production/handler`,
+			stagingEndpoint: `https://hmfnvefe14.execute-api.us-east-1.amazonaws.com/staging/handler`,
+			...options
+		}
+		super(options)
+	}
+	triggerChange(id = false) {
+		this.log(`Triggering any changes...`)
+		this.changeEventsOptions.forEach((opt, key) => {
+			if (id !== false) {
+				id = id.toLowerCase()
+				if (opt.id === id) {
+					if (opt.formatted) {
+						this.log(`Triggering change for ${id}: formatted price`)
+						this.changeEvents[key](this.getFormattedPrice(id))
+					}
+					else {
+						this.log(`Triggering change for ${id}: unformatted price`)
+						this.changeEvents[key](this.getPrice(id))
+					}
+				}
+			}
+			else if (opt.id === false) {
+				if (opt.formatted) {
+					this.log(`Triggering change for all: formatted price`)
+					this.changeEvents[key](this.getFormattedPrices())
+				}
+				else {
+					this.log(`Triggering change for all: unformatted price`)
+					this.changeEvents[key](this.getPrices())
+				}
+			}
+		})
+	}
+	getPrice(id) {
+		id = id.toLowerCase()
+		if (id in this.store) {
+			return this.store[id]
+		}
+	}
+	getPrices() {
+		return {
+			...this.store
+		}
+	}
+	getFormattedPrice(id) {
+		let price = this.getPrice(id)
+		if (price) {
+			return formatPrice(price)
+		}
+	}
+	getFormattedPrices() {
+		let prices = {}
+		for (let i in this.store) {
+			if (this.store[i]) {
+				prices[i] = formatPrice(this.store[i])
+			}
+		}
+		return prices
+	}
 }
 
 export default PriceStore

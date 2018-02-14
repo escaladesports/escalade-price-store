@@ -1,6 +1,6 @@
 export default function(){
 	if(this.options.verbose){
-		console.log(...arguments)
+		console.log(`${this.constructor.name}:`, ...arguments)
 	}
 	return this
 }
