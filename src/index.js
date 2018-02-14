@@ -1,6 +1,5 @@
 import format from 'usd-formatter'
-
-import DataStore from './data'
+import DataStore from 'escalade-data-store'
 
 function formatPrice(price) {
 	if (price === 'undefined') {

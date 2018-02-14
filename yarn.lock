@@ -2369,6 +2369,14 @@ esca-scripts@0.13.4:
     write-yaml "^1.0.0"
     yn-cli "^1.0.0"
 
+escalade-data-store@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/escalade-data-store/-/escalade-data-store-1.0.2.tgz#bfcc7bb306d660d626e50d949c9ae1e0ec368c9a"
+  dependencies:
+    babel-runtime "^6.26.0"
+    fetch-retry "^1.1.1"
+    js-cookie "^2.2.0"
+
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -5952,7 +5960,7 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-"static-server@github:escaladesports/static-server":
+static-server@escaladesports/static-server:
   version "3.0.0"
   resolved "https://codeload.github.com/escaladesports/static-server/tar.gz/0ef140cc5af48cba5249575df2bce1a6ca702f6f"
   dependencies:
